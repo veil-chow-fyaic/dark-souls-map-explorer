@@ -62,21 +62,44 @@ export const WorldScene = () => {
           maxPolarAngle={Math.PI / 2.1}
         />
 
-        {/* Ambient and atmospheric lighting */}
-        <ambientLight intensity={0.15} color="#4a5568" />
+        {/* Ambient and atmospheric lighting - enhanced */}
+        <ambientLight intensity={0.4} color="#8899aa" />
+        
+        {/* Main directional light (sun/moon) */}
         <directionalLight
-          position={[10, 20, 5]}
-          intensity={0.3}
-          color="#f4a460"
+          position={[15, 30, 10]}
+          intensity={0.8}
+          color="#ffeedd"
           castShadow
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
         />
-        <pointLight position={[0, 0, 0]} intensity={0.5} color="#ff6b35" distance={15} />
+        
+        {/* Fill light from opposite side */}
+        <directionalLight
+          position={[-10, 15, -10]}
+          intensity={0.4}
+          color="#aabbcc"
+        />
+        
+        {/* Rim light for depth */}
+        <directionalLight
+          position={[0, 5, -20]}
+          intensity={0.3}
+          color="#ff9966"
+        />
+        
+        {/* Central bonfire glow */}
+        <pointLight position={[0, 2, 0]} intensity={1.5} color="#ff6b35" distance={20} decay={2} />
+        
+        {/* Hemisphere light for natural sky/ground bounce */}
+        <hemisphereLight args={["#4466aa", "#332211", 0.5]} />
 
         {/* Stars background */}
-        <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={0.5} />
+        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
 
-        {/* Fog effect */}
-        <fog attach="fog" args={["#0a0f14", 30, 100]} />
+        {/* Fog effect - pushed back for better visibility */}
+        <fog attach="fog" args={["#1a1f25", 50, 120]} />
         <Fog />
 
         {/* World locations */}

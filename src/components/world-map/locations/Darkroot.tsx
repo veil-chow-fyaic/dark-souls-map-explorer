@@ -22,27 +22,27 @@ export const Darkroot = ({ onHover, onUnhover }: Props) => {
       {/* Forest floor */}
       <mesh position={[0, -1, 0]} receiveShadow>
         <cylinderGeometry args={[5, 6, 2, 8]} />
-        <meshStandardMaterial color="#1a3a1a" flatShading />
+        <meshStandardMaterial color="#3a5a3a" flatShading roughness={0.9} />
       </mesh>
 
       {/* Giant trees */}
       {[
-        [-2, 0, -2],
-        [2, 0, -1],
-        [-1, 0, 2],
-        [1.5, 0, 2.5],
-        [-3, 0, 0],
-      ].map((pos, i) => (
-        <group key={i} position={pos as [number, number, number]}>
+        { pos: [-2, 0, -2], h: 5 },
+        { pos: [2, 0, -1], h: 6 },
+        { pos: [-1, 0, 2], h: 4.5 },
+        { pos: [1.5, 0, 2.5], h: 5.5 },
+        { pos: [-3, 0, 0], h: 4 },
+      ].map((tree, i) => (
+        <group key={i} position={tree.pos as [number, number, number]}>
           {/* Trunk */}
           <mesh position={[0, 2, 0]} castShadow>
-            <cylinderGeometry args={[0.3, 0.5, 4 + Math.random() * 2, 5]} />
-            <meshStandardMaterial color="#3d2817" flatShading />
+            <cylinderGeometry args={[0.3, 0.5, tree.h, 5]} />
+            <meshStandardMaterial color="#6d4827" flatShading roughness={0.9} />
           </mesh>
           {/* Foliage */}
-          <mesh position={[0, 5 + Math.random(), 0]}>
-            <icosahedronGeometry args={[1.5 + Math.random() * 0.5, 0]} />
-            <meshStandardMaterial color="#1e5128" flatShading />
+          <mesh position={[0, tree.h, 0]}>
+            <icosahedronGeometry args={[1.5 + (i % 2) * 0.3, 0]} />
+            <meshStandardMaterial color="#3e7138" flatShading roughness={0.8} />
           </mesh>
         </group>
       ))}
