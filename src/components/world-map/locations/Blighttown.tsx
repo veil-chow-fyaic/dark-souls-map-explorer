@@ -21,7 +21,7 @@ export const Blighttown = ({ onHover, onUnhover }: Props) => {
       {/* Toxic swamp */}
       <mesh ref={swampRef} position={[0, -4, 0]} receiveShadow>
         <cylinderGeometry args={[6, 7, 1, 8]} />
-        <meshStandardMaterial color="#3a5a40" flatShading transparent opacity={0.8} />
+        <meshStandardMaterial color="#5a8a60" flatShading transparent opacity={0.85} roughness={0.4} />
       </mesh>
 
       {/* Wooden scaffolding */}
@@ -35,20 +35,20 @@ export const Blighttown = ({ onHover, onUnhover }: Props) => {
           {/* Vertical beams */}
           <mesh position={[0, scaffold.height / 2, 0]}>
             <boxGeometry args={[0.2, scaffold.height, 0.2]} />
-            <meshStandardMaterial color="#5c4033" flatShading />
+            <meshStandardMaterial color="#8c6043" flatShading roughness={0.9} />
           </mesh>
           <mesh position={[0.8, scaffold.height / 2, 0]}>
             <boxGeometry args={[0.2, scaffold.height, 0.2]} />
-            <meshStandardMaterial color="#5c4033" flatShading />
+            <meshStandardMaterial color="#8c6043" flatShading roughness={0.9} />
           </mesh>
           {/* Horizontal platforms */}
           <mesh position={[0.4, scaffold.height * 0.3, 0]}>
             <boxGeometry args={[1.5, 0.15, 0.8]} />
-            <meshStandardMaterial color="#654321" flatShading />
+            <meshStandardMaterial color="#956541" flatShading roughness={0.85} />
           </mesh>
           <mesh position={[0.4, scaffold.height * 0.7, 0]}>
             <boxGeometry args={[1.5, 0.15, 0.8]} />
-            <meshStandardMaterial color="#654321" flatShading />
+            <meshStandardMaterial color="#956541" flatShading roughness={0.85} />
           </mesh>
         </group>
       ))}
@@ -56,23 +56,26 @@ export const Blighttown = ({ onHover, onUnhover }: Props) => {
       {/* Quelaag's Domain entrance */}
       <mesh position={[0, -3.5, 4]} rotation={[-0.3, 0, 0]}>
         <cylinderGeometry args={[1.5, 2, 2, 6]} />
-        <meshStandardMaterial color="#2d2d2d" flatShading />
+        <meshStandardMaterial color="#4d4d4d" flatShading roughness={0.8} />
       </mesh>
 
       {/* Spider web hints */}
       <mesh position={[0, -2.5, 4.5]} rotation={[-0.5, 0, 0]}>
         <ringGeometry args={[0.5, 1.2, 6]} />
-        <meshBasicMaterial color="#ffffff" transparent opacity={0.2} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.35} side={THREE.DoubleSide} />
       </mesh>
 
-      {/* Poison fog effect */}
-      <pointLight position={[0, -3, 0]} color="#7cfc00" intensity={0.3} distance={8} />
+      {/* Poison fog effect - enhanced */}
+      <pointLight position={[0, -2, 0]} color="#aaff55" intensity={0.8} distance={12} />
 
       {/* Great Hollow entrance hint */}
       <mesh position={[-4, -3, -2]} rotation={[0, 0.5, 0]}>
         <cylinderGeometry args={[1, 1.5, 3, 5]} />
-        <meshStandardMaterial color="#3d3d1d" flatShading />
+        <meshStandardMaterial color="#5d5d3d" flatShading roughness={0.85} />
       </mesh>
+      
+      {/* Local ambient */}
+      <pointLight position={[0, 2, 0]} color="#88aa66" intensity={0.5} distance={15} />
     </group>
   );
 };

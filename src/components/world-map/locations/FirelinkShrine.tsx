@@ -26,7 +26,7 @@ export const FirelinkShrine = ({ onHover, onUnhover }: Props) => {
       {/* Main platform */}
       <mesh position={[0, -0.5, 0]} receiveShadow>
         <cylinderGeometry args={[4, 5, 1, 8]} />
-        <meshStandardMaterial color="#2d3436" flatShading />
+        <meshStandardMaterial color="#5a6570" flatShading roughness={0.8} />
       </mesh>
 
       {/* Ruined pillars */}
@@ -35,20 +35,20 @@ export const FirelinkShrine = ({ onHover, onUnhover }: Props) => {
           key={i}
           position={[
             Math.cos((i * Math.PI * 2) / 5) * 3.5,
-            0.5 + Math.random() * 1.5,
+            0.5 + (i % 2) * 0.8,
             Math.sin((i * Math.PI * 2) / 5) * 3.5,
           ]}
           castShadow
         >
-          <boxGeometry args={[0.5, 1 + Math.random() * 2, 0.5]} />
-          <meshStandardMaterial color="#4a5568" flatShading />
+          <boxGeometry args={[0.5, 1 + (i % 3) * 0.8, 0.5]} />
+          <meshStandardMaterial color="#7a8598" flatShading roughness={0.7} />
         </mesh>
       ))}
 
       {/* Central bonfire structure */}
       <mesh position={[0, 0.3, 0]}>
         <cylinderGeometry args={[0.3, 0.5, 0.6, 6]} />
-        <meshStandardMaterial color="#1a1a2e" flatShading />
+        <meshStandardMaterial color="#3a3a4e" flatShading roughness={0.6} />
       </mesh>
 
       {/* Sword in bonfire */}

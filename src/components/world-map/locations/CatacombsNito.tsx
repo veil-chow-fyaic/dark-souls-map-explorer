@@ -21,13 +21,13 @@ export const CatacombsNito = ({ onHover, onUnhover }: Props) => {
       {/* Cave entrance */}
       <mesh position={[0, 2, 0]} rotation={[0.2, 0, 0]}>
         <cylinderGeometry args={[3, 4, 4, 6]} />
-        <meshStandardMaterial color="#2d2d2d" flatShading />
+        <meshStandardMaterial color="#5d5d5d" flatShading roughness={0.85} />
       </mesh>
 
       {/* Tomb of Giants area */}
       <mesh position={[0, -2, 0]} receiveShadow>
         <boxGeometry args={[8, 4, 6]} />
-        <meshStandardMaterial color="#1a1a1a" flatShading />
+        <meshStandardMaterial color="#3a3a3a" flatShading roughness={0.9} />
       </mesh>
 
       {/* Giant skeleton remains */}
@@ -40,12 +40,12 @@ export const CatacombsNito = ({ onHover, onUnhover }: Props) => {
           {/* Skull */}
           <mesh position={[0, 0.5, 0]}>
             <sphereGeometry args={[0.4, 5, 4]} />
-            <meshStandardMaterial color="#e8e8dc" flatShading />
+            <meshStandardMaterial color="#f0f0e4" flatShading roughness={0.6} />
           </mesh>
           {/* Ribcage */}
           <mesh position={[0, 0, 0.3]} rotation={[0.5, 0, 0]}>
             <boxGeometry args={[0.6, 0.8, 0.3]} />
-            <meshStandardMaterial color="#d8d8cc" flatShading />
+            <meshStandardMaterial color="#e8e8dc" flatShading roughness={0.6} />
           </mesh>
         </group>
       ))}
@@ -53,35 +53,35 @@ export const CatacombsNito = ({ onHover, onUnhover }: Props) => {
       {/* Nito's chamber */}
       <mesh position={[0, -4, -2]}>
         <boxGeometry args={[5, 3, 4]} />
-        <meshStandardMaterial color="#0f0f0f" flatShading />
+        <meshStandardMaterial color="#2f2f2f" flatShading roughness={0.9} />
       </mesh>
 
       {/* Nito representation (mass of bones) */}
       <group position={[0, -3.5, -2]}>
         <mesh>
           <icosahedronGeometry args={[1.5, 0]} />
-          <meshStandardMaterial color="#1a1a1a" flatShading />
+          <meshStandardMaterial color="#3a3a3a" flatShading roughness={0.85} />
         </mesh>
         {/* Soul glow */}
-        <pointLight ref={soulLightRef} color="#4a90a4" intensity={0.5} distance={5} />
+        <pointLight ref={soulLightRef} color="#6ab0c4" intensity={1} distance={8} />
       </group>
 
       {/* Coffins */}
       {[-3, 3].map((x, i) => (
-        <mesh key={i} position={[x, -1, -2]} rotation={[0, Math.random() * 0.5, 0]}>
+        <mesh key={i} position={[x, -1, -2]} rotation={[0, i * 0.3, 0]}>
           <boxGeometry args={[0.8, 0.4, 1.8]} />
-          <meshStandardMaterial color="#3d3d3d" flatShading />
+          <meshStandardMaterial color="#5d5d5d" flatShading roughness={0.8} />
         </mesh>
       ))}
 
       {/* Wheel skeleton path indicator */}
       <mesh position={[3, 1, 2]}>
         <ringGeometry args={[0.5, 0.7, 8]} />
-        <meshStandardMaterial color="#4a4a4a" side={THREE.DoubleSide} />
+        <meshStandardMaterial color="#7a7a7a" side={THREE.DoubleSide} roughness={0.7} />
       </mesh>
 
-      {/* Dark atmosphere */}
-      <pointLight position={[0, 0, 0]} color="#2a2a4a" intensity={0.2} distance={10} />
+      {/* Dark atmosphere - enhanced */}
+      <pointLight position={[0, 1, 0]} color="#5a6a8a" intensity={0.6} distance={15} />
     </group>
   );
 };
